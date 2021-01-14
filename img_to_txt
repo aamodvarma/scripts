@@ -1,0 +1,7 @@
+#!/bin/bash
+
+screenimgtxt -s /home/ajrv/PycharmProjects/LinuxIMGtoCLIP/temp/
+python /home/ajrv/PycharmProjects/LinuxIMGtoCLIP/main.py
+sudo rm -f /home/ajrv/PycharmProjects/LinuxIMGtoCLIP/temp/temp.img
+sudo rm -f /home/ajrv/PycharmProjects/LinuxIMGtoCLIP/temp/temp.txt
+
