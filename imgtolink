@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+import /tmp/.filetolink.png
+
+curl -F "file=@/tmp/.filetolink.png" 0x0.st | xclip -selection c
+notify-send "Your file is in the clipboard"
+sudo rm -f /tmp/.filetolink.png
