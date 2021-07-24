@@ -1,0 +1,6 @@
+#!/bin/bash
+
+x=$(rofi -dmenu -p Search\ Youtube )
+sudo sed -i 's/www.youtube.com/custom1/g' /etc/hosts
+ytfzf -t $x
+sudo sed -i 's/custom1/www.youtube.com/g' /etc/hosts

@@ -1,0 +1,28 @@
+#!/bin/python3.9
+
+import os
+import sys
+from Xlib import display
+
+data = display.Display().screen().root.query_pointer()._data
+locationtuple = (data["root_x"], data["root_y"])
+
+
+n = int(sys.argv[2])
+leftd = f"bspc desktop -f HDMI-0:\\^{n}"
+leftn = f"bspc node -d HDMI-0:\\^{n}"
+rightd = f"bspc desktop -f eDP-1-1:\\^{n}"
+rightn = f"bspc node -d eDP-1-1:\\^{n}"
+
+if locationtuple[0] <= 1920:
+    if sys.argv[1] == 'desktop':
+        os.system(leftd)
+    elif sys.argv[1] == 'node':
+        os.system(leftn)
+
+
+elif locationtuple[0] >1920:
+    if sys.argv[1] == 'desktop':
+        os.system(rightd)
+    elif sys.argv[1] == 'node':
+        os.system(rightn)

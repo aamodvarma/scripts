@@ -1,6 +1,5 @@
 #!/bin/bash
 
-file=$(find $HOME/Downloads $HOME/Pictures -type f | rofi -dmenu -i -l 15)
+file=$(find $HOME/Downloads $HOME/pix -type f | rofi -dmenu -i -l 15)
 curl -F "file=@$file" 0x0.st | xclip -selection c
 notify-send "Your file is in the clipboard"
-

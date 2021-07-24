@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+
+
+
+x=$(lsblk -lp | grep "part $" | awk '{print $1, "(" $4 ")"}')
+select=$(echo "$x" | rofi -dmenu -i -p "What drive to mount" | awk '{print $1}'  )
+
+echo $select
+
+sudo mount $select && exit 0
+
+y=$()

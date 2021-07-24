@@ -12,7 +12,7 @@ function help_and_exit {
 
     Take screenshot of a whole screen or a specified region,
     save it to a specified folder (current folder is default)
-    and copy it to a clipboard. 
+    and copy it to a clipboard.
 
        -h   - print help and exit
        -s   - take a screenshot of a screen region
@@ -27,14 +27,17 @@ if [ "${1}" == '-h'  ]; then
     help_and_exit
 elif [ "${1:0:1}" == '-' ]; then
     if [ "${1}" != '-s' ]; then
-        help_and_exit "error: unknown option ${1}"  
+        help_and_exit "error: unknown option ${1}"
     fi
     base_folder="${2}"
 else
     base_folder="${1}"
     params="-window root"
-fi  
+fi
 
-file_path=${base_folder}temp.png
+name=$(echo $(date) | awk '{print $2,$3,$1,$4,$6}' | sed -e 's/\ /_/g')
+echo $name
+
+file_path="/home/ajrv/Pictures/Screenshots/2021/$name.png"
 import ${params} ${file_path}
-xclip -selection clipboard -target image/png -i < ${file_path}
+xclip -selection clipboard -target image/png -i < $file_path
