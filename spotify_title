@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if ! pgrep -x "spotify" > /dev/null
+then
+	echo " "
+else
+	x=$(wmctrl -l -p | grep $(xprop -name spotify | grep PID | awk '{print $3}') |  awk '{ for (i=5; i<=NF; i++) print $i }' | tr '\n' ' ')
+	first=$(echo "$x" | awk '{print $1}')
+
+	if ! [ "$first" == "Spotify" ]
+	then
+		echo $x > /tmp/spotifytitle
+		echo $x
+	else
+		echo $(cat /tmp/spotifytitle)
+	fi
+fi

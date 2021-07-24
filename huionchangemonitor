@@ -2,4 +2,4 @@
 
 
 x=$(xrandr  | grep " connected" | awk '{print $1}' | rofi -dmenu)
-xinput map-to-output "HUION Huion Tablet_HS611 Pen Pen (0)" "$x"
+xinput map-to-output "HUION Huion Tablet_HS611 Pen (0)" "$x"
